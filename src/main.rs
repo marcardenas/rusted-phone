@@ -1,16 +1,26 @@
+mod conf;
 mod server;
+mod argparse;
 
+use argparse::Args;
 use server::Server;
+use structopt::StructOpt;
 use simple_logger::SimpleLogger;
-
-const SERVER_IP: &str = "127.0.0.1";
-const SERVER_PORT: &str = "1357";
 
 fn main() {
     SimpleLogger::new().init().unwrap();
     log_panics::init();
 
-    let server: Server = Server::new(String::from(SERVER_IP), String::from(SERVER_PORT));
+    let Args {
+        server,
+        echo,
+        broadcast,
+        ip,
+        port
+    } = Args::from_args();
 
-    server.start().unwrap();
+    if server {
+        let server: Server = Server::new(ip, port, echo);
+        server.start().unwrap();
+    }
 }

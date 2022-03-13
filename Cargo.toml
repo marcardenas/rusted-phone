@@ -1,6 +1,6 @@
 [package]
 name = "rusted-phone"
-version = "0.1.0"
+version = "0.0.1"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
@@ -12,3 +12,4 @@ RUST_LOG = "trace"
 log = "0.4.14"
 log-panics = "2.0.0"
 simple_logger = "2.1.0"
+structopt = "0.3"
